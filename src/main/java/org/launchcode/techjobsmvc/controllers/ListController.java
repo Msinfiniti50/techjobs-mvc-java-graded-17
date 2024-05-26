@@ -26,12 +26,13 @@ public class ListController {
         columnChoices.put("employer", "Employer");
         columnChoices.put("location", "Location");
         columnChoices.put("positionType", "Position Type");
-        columnChoices.put("coreCompetency", "Skill");
+        columnChoices.put("skill", "Skill");
 
         tableChoices.put("employer", JobData.getAllEmployers());
         tableChoices.put("location", JobData.getAllLocations());
         tableChoices.put("positionType", JobData.getAllPositionTypes());
         tableChoices.put("coreCompetency", JobData.getAllCoreCompetency());
+        tableChoices.put("all", "All");
     }
 
     @GetMapping(value = "")
@@ -53,13 +54,14 @@ public class ListController {
         if (column.equals("all")){
             jobs = JobData.findAll();
             model.addAttribute("title", "All Jobs");
+//            model.addAttribute("isAllJobs", false);
         } else {
             jobs = JobData.findByColumnAndValue(column, value);
             model.addAttribute("title", "Jobs with " + columnChoices.get(column) + ": " + value);
         }
         model.addAttribute("jobs", jobs);
 
-        return "list";
+        return "list-jobs";
     }
 }
 

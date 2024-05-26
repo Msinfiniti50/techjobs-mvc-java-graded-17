@@ -5,55 +5,15 @@
 <div th:replace="~{fragments :: page-header}"></div>
 <div class="container body-content">
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
-    <h2 class = "centered">View Jobs By Category</h2>
-</div>
-
-
-<div th:each="job : ${jobs}" class="job-box" style="border: 1px solid black; margin:10px; padding: 10px;">
-    <table class="job-listing">
-        <tbody>
-        <tr>
-            <td>ID</td>
-            <td th:text="${job.id}"></td>
-        </tr>
-        <tr>
-            <td>Name</td>
-            <td th:text="${job.name}"></td>
-        </tr>
-        <tr>
-            <td>Employer</td>
-            <td th:text="${job.employer}"></td>
-        </tr>
-        <tr>
-            <td>Location</td>
-            <td th:text="${job.location}"></td>
-        </tr>
-        <tr>
-            <td>Position Type</td>
-            <td th:text="${job.positionType}"></td>
-        </tr>
-        <tr>
-            <td>Skill</td>
-            <td th:text="${job.coreCompetency}"></td>
-        </tr>
-        </tbody>
-    </table>
+    <h2 class="centered">View Jobs By Category</h2>
 </div>
 <table class="centeredTable">
     <tr>
-        <th:block th:each="column : ${columns}">
+    <th:block th:each="column : ${columns}">
             <th th:text = "${column.value}"></th>
         </th:block>
     </tr>
     <tr>
-        <td>
-            <ul>
-                <li>
-                    <a href="/list/jobs?column=all">View All</a>
-                    <!-- TODO #2: Complete the View Jobs By Category Table. -->
-                </li>
-            </ul>
-        </td>
         <td th:each="category : ${tableChoices}">
             <ul>
                 <li th:each="item : ${category.value}">
