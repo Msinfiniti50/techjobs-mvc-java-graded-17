@@ -36,7 +36,8 @@ public class ListController {
 
     @GetMapping(value = "")
     public String list(Model model) {
-        model.addAttribute("columns", columnChoices);
+        model.addAttribute("title", "JobsList");
+        model.addAttribute("columns", ListController.columnChoices);
         model.addAttribute("tableChoices", tableChoices);
         model.addAttribute("employers", JobData.getAllEmployers());
         model.addAttribute("locations", JobData.getAllLocations());
@@ -58,7 +59,7 @@ public class ListController {
         }
         model.addAttribute("jobs", jobs);
 
-        return "list-jobs";
+        return "list";
     }
 }
 
